@@ -1,3 +1,4 @@
+# encoding: ISO-8859-1
 require 'set'
 require 'prime'
 
@@ -132,7 +133,7 @@ module ExtremeStartup
 
   class MaximumQuestion < SelectFromListOfNumbersQuestion
     def as_text
-      "which of the following numbers is the largest: " + @numbers.join(', ')
+      "quelle est le nombre le plus grand parmi les suivants :" + @numbers.join(', ')
     end
     def points
       40
@@ -149,7 +150,7 @@ module ExtremeStartup
 
   class AdditionQuestion < BinaryMathsQuestion
     def as_text
-      "what is #{@n1} plus #{@n2}"
+      "combien font #{@n1} plus #{@n2}"
     end
   private
     def correct_answer
@@ -159,7 +160,7 @@ module ExtremeStartup
 
   class SubtractionQuestion < BinaryMathsQuestion
     def as_text
-      "what is #{@n1} minus #{@n2}"
+      "combien font #{@n1} moins #{@n2}"
     end
   private
     def correct_answer
@@ -169,7 +170,7 @@ module ExtremeStartup
 
   class MultiplicationQuestion < BinaryMathsQuestion
     def as_text
-      "what is #{@n1} multiplied by #{@n2}"
+      "combien font #{@n1} multiplié par #{@n2}"
     end
   private
     def correct_answer
@@ -179,7 +180,7 @@ module ExtremeStartup
 
   class AdditionAdditionQuestion < TernaryMathsQuestion
     def as_text
-      "what is #{@n1} plus #{@n2} plus #{@n3}"
+      "combien font #{@n1} plus #{@n2} plus #{@n3}"
     end
     def points
       30
@@ -192,7 +193,7 @@ module ExtremeStartup
 
   class AdditionMultiplicationQuestion < TernaryMathsQuestion
     def as_text
-      "what is #{@n1} plus #{@n2} multiplied by #{@n3}"
+      "combien font #{@n1} plus #{@n2} multiplié par #{@n3}"
     end
     def points
       60
@@ -205,7 +206,7 @@ module ExtremeStartup
 
   class MultiplicationAdditionQuestion < TernaryMathsQuestion
     def as_text
-      "what is #{@n1} multiplied by #{@n2} plus #{@n3}"
+      "combien font #{@n1} multiplié par #{@n2} plus #{@n3}"
     end
     def points
       50
@@ -218,7 +219,7 @@ module ExtremeStartup
 
   class PowerQuestion < BinaryMathsQuestion
     def as_text
-      "what is #{@n1} to the power of #{@n2}"
+      "combien font #{@n1} à la puissance #{@n2}"
     end
     def points
       20
@@ -231,7 +232,7 @@ module ExtremeStartup
 
   class SquareCubeQuestion < SelectFromListOfNumbersQuestion
     def as_text
-      "which of the following numbers is both a square and a cube: " + @numbers.join(', ')
+      "parmis les nombres suivant, lequel est en même temps un carré et une racine carré : " + @numbers.join(', ')
     end
     def points
       60
@@ -264,7 +265,7 @@ module ExtremeStartup
 
   class PrimesQuestion < SelectFromListOfNumbersQuestion
      def as_text
-       "which of the following numbers are primes: " + @numbers.join(', ')
+       "quels sont les nombres premiers parmi les suivants : " + @numbers.join(', ')
      end
      def points
        60
@@ -283,12 +284,12 @@ module ExtremeStartup
     def as_text
       n = @n1 + 4
       if (n > 20 && n % 10 == 1)
-        return "what is the #{n}st number in the Fibonacci sequence"
+        return "quel est le #{n}ème nombre de la suite de Fibonacci"
       end
       if (n > 20 && n % 10 == 2)
-        return "what is the #{n}nd number in the Fibonacci sequence"
+        return "quel est le #{n}ème nombre de la suite de Fibonacci"
       end
-      return "what is the #{n}th number in the Fibonacci sequence"  
+      return "quel est le #{n}ème nombre de la suite de Fibonacci"
     end
     def points
       50
@@ -306,11 +307,11 @@ module ExtremeStartup
     class << self
       def question_bank
         [
-          ["who is the Prime Minister of Great Britain", "David Cameron"],
-          ["which city is the Eiffel tower in", "Paris"],
-          ["what currency did Spain use before the Euro", "peseta"],
-          ["what colour is a banana", "yellow"],
-          ["who played James Bond in the film Dr No", "Sean Connery"]
+          ["qui est le premier ministre de Grande Bretagne", "David Cameron"],
+          ["dans quelle ville est la tour eiffel", "Paris"],
+          ["quelle est la devise utilisé par l'Espagne avant l'Euro", "peseta"],
+          ["de quelle couleur est une banane", "yellow"],
+          ["qui joue James Bond dans le film Dr. No", "Sean Connery"]
         ]
       end
     end
@@ -334,7 +335,7 @@ module ExtremeStartup
   class AnagramQuestion < Question
     def as_text
       possible_words = [@anagram["correct"]] + @anagram["incorrect"]
-      %Q{which of the following is an anagram of "#{@anagram["anagram"]}": #{possible_words.shuffle.join(", ")}}
+      %Q{parmi les mots suivant, lequel est un anagramme de "#{@anagram["anagram"]}": #{possible_words.shuffle.join(", ")}}
     end
 
     def initialize(player, *words)
@@ -405,7 +406,6 @@ module ExtremeStartup
         AdditionMultiplicationQuestion,
         MultiplicationAdditionQuestion,
         AnagramQuestion,
-        ScrabbleQuestion
       ]
     end
 
@@ -432,7 +432,7 @@ module ExtremeStartup
     end
 
     def as_text
-      "what is your name"
+      "quel est ton nom"
     end
   end
 
